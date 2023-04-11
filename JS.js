@@ -1,5 +1,6 @@
 const bod = document.querySelector('body');
 var useracum=0, compacum=0;
+const div =document.querySelector('#finalres');
 
 document.querySelector('#rock').addEventListener('click', () => {
    play("ROCK");
@@ -35,7 +36,7 @@ function GetcomputerChoice() {
 function play (userinput){
    var compChoice = GetcomputerChoice() ;
    var resultdiv = document.querySelector('#result');
-   resultdiv.textContent ="COMPUTER CHOSE: "+ compChoice+"you chose " + userinput;
+   resultdiv.textContent ="COMPUTER CHOSE: "+ compChoice+" YOU CHOSE " + userinput;
    
    var resultspan = document.querySelector('#result2');
 
@@ -46,27 +47,27 @@ function play (userinput){
    else if (compChoice=="PAPER"&& userinput=="SISSORS") {
       useracum++;
 
-      resultspan.textContent= "you WIN SISSORS BEATS PAPER " ;
+      resultspan.textContent= "YOU WIN SISSORS BEATS PAPER " ;
    }
    else if (compChoice=="PAPER"&& userinput=="ROCK") {
       compacum++;
 
-      resultspan.textContent= "you LOOSE PAPER BEATS ROCK ";
+      resultspan.textContent= "YOU LOOSE PAPER BEATS ROCK ";
    } 
    else if (compChoice=="SISSORS"&& userinput=="PAPER") {
       compacum++;
 
-      resultspan.textContent= "you LOOSE SISSORS BEATS PAPEr";
+      resultspan.textContent= "YOU LOOSE SISSORS BEATS PAPER";
    }
    else if (compChoice=="SISSORS"&& userinput=="ROCK") {
       useracum++;
 
-      resultspan.textContent= "you WIN ROCK BEATS SISSORS"; 
+      resultspan.textContent= "YOU WIN ROCK BEATS SISSORS"; 
    }
    else if (compChoice=="ROCK"&& userinput=="PAPER") {
       useracum++;
 
-      resultspan.textContent= "you WIN PAPER BEATS ROCK"; 
+      resultspan.textContent= "YOU WIN PAPER BEATS ROCK"; 
    }
    else if (compChoice=="ROCK"&& userinput=="SISSORS") {
       compacum++;
@@ -74,46 +75,30 @@ function play (userinput){
       resultspan.textContent= "YOU LOOSE SISSORS BEATS ROCK"; 
    }
   var score= document.querySelector('#score');
-  score.textContent=compacum+" "+ useracum;
-
-  if(compacum==5&&compacum>useracum){
-   const div =document.querySelector('#finalres');
-   div.textContent="YOU LOOSE GAME OVER";
-
-   compacum=0, useracum=0;
-  }
-  if(useracum==5&&useracum>compacum){
-   const div =document.querySelector('#finalres');
-   div.textContent="YOU WIN GAME OVER";
-
-   compacum=0, useracum=0;
-
-  }
-
+  score.textContent="COMPUTER "+compacum+" USER "+ useracum;
+   game();
+ 
 
 }
 function game() {
-  let compacum=0, useracum=0;
-   for (let index =0 ; index <5 ; index++){
-      let statement =play();
+   if(compacum==5&&compacum>useracum){
+      div.textContent="YOU LOOSE GAME OVER";
+      
+      compacum=0, useracum=0;
+     }
+     if(useracum==5&&useracum>compacum){
+      div.textContent="YOU WIN GAME OVER";
    
-      console.log(statement);
-      if (statement.includes("WIN")) {
-         useracum++;
-      } else if (statement.includes("LOOSE")){
-         compacum++;
-      }
-      console.log("comp = "+compacum+" user= "+useracum);
-
-   }
-   if (compacum>useracum) {
-      console.log("you loose");
-   }  else if(useracum>compacum) {
-      console.log("you win");
-   }
-   else{
-      console.log("Its a tie");
-   }
+      compacum=0, useracum=0;
+   
+     }
+     if(useracum==5&&useracum==5){
+      div.textContent="TIE GAME OVER";
+      
+      compacum=0, useracum=0;
+   
+     }
+  
    }
 
 
