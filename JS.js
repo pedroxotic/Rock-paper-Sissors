@@ -1,9 +1,16 @@
-console.log("hello");
+const bod = document.querySelector('body');
+var useracum=0, compacum=0;
 
-let rock =document.querySelector('#rock');
-
-rock.addEventListener('click', () => {
+document.querySelector('#rock').addEventListener('click', () => {
    play("ROCK");
+ });
+
+ document.querySelector('#paper').addEventListener('click', () => {
+   play("PAPER");
+ });
+
+ document.querySelector('#sissors').addEventListener('click', () => {
+   play("SISSORS");
  });
 
 
@@ -27,34 +34,63 @@ function GetcomputerChoice() {
 
 function play (userinput){
    var compChoice = GetcomputerChoice() ;
+   var resultdiv = document.querySelector('#result');
+   resultdiv.textContent ="COMPUTER CHOSE: "+ compChoice+"you chose " + userinput;
+   
+   var resultspan = document.querySelector('#result2');
 
-  // var compacum =0, useracum=0;
-   console.log("COMPUTER CHOSE: "+ compChoice+"you chose " + userinput); 
    if (compChoice==userinput) {
-      console.log( "TIE");
+      resultspan.textContent= "TIE " ;
       
    }
    else if (compChoice=="PAPER"&& userinput=="SISSORS") {
-      console.log( "you WIN SISSORS BEATS PAPER");
+      useracum++;
+
+      resultspan.textContent= "you WIN SISSORS BEATS PAPER " ;
    }
    else if (compChoice=="PAPER"&& userinput=="ROCK") {
-      console.log( "you )LOOSE PAPER BEATS ROCK");
+      compacum++;
+
+      resultspan.textContent= "you LOOSE PAPER BEATS ROCK ";
    } 
    else if (compChoice=="SISSORS"&& userinput=="PAPER") {
-      console.log( "you LOOSE SISSORS BEATS PAPER");
+      compacum++;
 
+      resultspan.textContent= "you LOOSE SISSORS BEATS PAPEr";
    }
    else if (compChoice=="SISSORS"&& userinput=="ROCK") {
-      console.log( "you WIN ROCK BEATS SISSORS");
+      useracum++;
+
+      resultspan.textContent= "you WIN ROCK BEATS SISSORS"; 
    }
    else if (compChoice=="ROCK"&& userinput=="PAPER") {
-      console.log( "you )WIN PAPER BEATS ROCK");
+      useracum++;
 
+      resultspan.textContent= "you WIN PAPER BEATS ROCK"; 
    }
    else if (compChoice=="ROCK"&& userinput=="SISSORS") {
-      console.log("YOU L)OOSE SISSORS BEATS ROCK");
+      compacum++;
+
+      resultspan.textContent= "YOU LOOSE SISSORS BEATS ROCK"; 
    }
-   
+  var score= document.querySelector('#score');
+  score.textContent=compacum+" "+ useracum;
+
+  if(compacum==5&&compacum>useracum){
+   const div =document.querySelector('#finalres');
+   div.textContent="YOU LOOSE GAME OVER";
+
+   compacum=0, useracum=0;
+  }
+  if(useracum==5&&useracum>compacum){
+   const div =document.querySelector('#finalres');
+   div.textContent="YOU WIN GAME OVER";
+
+   compacum=0, useracum=0;
+
+  }
+
+
 }
 function game() {
   let compacum=0, useracum=0;
