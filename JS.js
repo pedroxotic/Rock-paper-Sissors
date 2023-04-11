@@ -2,17 +2,20 @@ const bod = document.querySelector('body');
 var useracum=0, compacum=0;
 const div =document.querySelector('#finalres');
 
-document.querySelector('#rock').addEventListener('click', () => {
-   play("ROCK");
- });
+   document.querySelector('#rock').addEventListener('click', () => {
+      play("ROCK");
+    });
+   
+    document.querySelector('#paper').addEventListener('click', () => {
+      play("PAPER");
+    });
+   
+    document.querySelector('#sissors').addEventListener('click', () => {
+      play("SISSORS");
+    });
 
- document.querySelector('#paper').addEventListener('click', () => {
-   play("PAPER");
- });
 
- document.querySelector('#sissors').addEventListener('click', () => {
-   play("SISSORS");
- });
+ 
 
 
 function GetcomputerChoice() {
@@ -85,20 +88,28 @@ function game() {
       div.textContent="YOU LOOSE GAME OVER";
       
       compacum=0, useracum=0;
+      
      }
      if(useracum==5&&useracum>compacum){
       div.textContent="YOU WIN GAME OVER";
    
       compacum=0, useracum=0;
-   
+      
+
      }
-     if(useracum==5&&useracum==5){
+     if(useracum==5&&compacum==5){
       div.textContent="TIE GAME OVER";
       
       compacum=0, useracum=0;
-   
+      
+
      }
-  
+     if (useracum!=0||compacum!=0){
+
+      div.textContent = "";
+    }
+      
+
    }
 
 
