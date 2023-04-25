@@ -1,0 +1,68 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #202020;
+  color: #fff;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  font-size: 5em;
+  margin: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0px 3px 0px #3e8e41;
+  width: 200px;
+  height: 200px;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 0px #3e8e41;
+}
+
+button:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+#rock {
+  background-size: 80%;
+  background-position: center;
+}
+
+#paper {
+  background-position: center;
+}
+
+#scissors {
+  background-size: 80%;
+  background-position: center;
+}
+
+#result {
+  font-size: 36px;
+  margin-top: 30px;
+}
+
+#result2,
+#subtitle {
+  font-size: 36px;
+  margin-top: 30px;
+}
+
+#score {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+#finalres,
+.title {
+  font-size: 48px;
+  margin-top: 50px;
+}
